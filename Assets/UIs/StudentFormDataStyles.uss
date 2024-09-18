@@ -1,79 +1,87 @@
-.container {
-    flex-grow: 1;
-    background-color: rgb(244, 247, 246);
-    padding: 10px;
-    align-items: stretch;
-    justify-content: flex-start;
-    width: 100%;
-    height: 100%;
-}
-
-.title {
-    font-size: 18px;
-    -unity-font-style: bold;
-    color: rgb(44, 62, 80);
-    margin-bottom: 10px;
-    -unity-text-align: middle-center;
-}
-
-.input-group {
-    margin-bottom: 8px;
-    width: 100%;
-}
-
-.input-label {
-    font-size: 12px;
-    color: rgb(52, 73, 94);
-    margin-bottom: 2px;
-    -unity-font-style: bold;
-}
-
-.input-field {
-    width: 100%;
-    padding: 4px;
+.card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
     background-color: rgb(255, 255, 255);
-    border-width: 0;
-    border-radius: 2px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: rgb(229, 231, 235);
+}
+
+.card-header {
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 32px;
+    -unity-font-style: bold;
+    margin-bottom: 8px;
+}
+
+.card-description {
     font-size: 12px;
+    color: rgb(107, 114, 128);
 }
 
-.input-field:focus {
-    background-color: rgb(236, 240, 241);
+.card-content {
+    margin-bottom: 16px;
 }
 
-.submit-button {
+.grid-container {
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+
+.grid-item {
+    flex: 1;
+    margin-right: 8px;
+}
+
+.form-row {
+    margin-bottom: 16px;
+}
+
+Label {
+    margin-bottom: 4px;
+}
+
+TextField {
+    height: 32px;
+    border-width: 1px;
+    border-color: rgb(229, 231, 235);
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+IntegerField {
+    height: 32px;
+    border-width: 1px;
+    border-color: rgb(229, 231, 235);
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+DropdownField {
+    height: 32px;
+    border-width: 1px;
+    border-color: rgb(229, 231, 235);
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+.card-footer {
+    margin-top: 16px;
+}
+
+#submit-button {
     width: 100%;
-    height: 30px;
-    background-color: rgb(52, 152, 219);
-    color: white;
-    font-size: 14px;
+    height: 40px;
+    background-color: rgb(59, 130, 246);
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
     -unity-font-style: bold;
-    border-radius: 2px;
-    margin-top: 10px;
-    transition-duration: 0.3s;
 }
 
-.submit-button:hover {
-    background-color: rgb(41, 128, 185);
-}
-
-.confirmation-text {
-    margin-top: 8px;
-    font-size: 20px;
-    color: rgb(0, 120, 51);
-    -unity-font-style: bold;
-    opacity: 0;
-    transition-duration: 0.3s;
-    -unity-background-image-tint-color: rgb(0, 0, 0);
-    -unity-text-align: upper-center;
-    border-left-color: rgb(199, 199, 199);
-    border-right-color: rgb(199, 199, 199);
-    border-top-color: rgb(199, 199, 199);
-    border-bottom-color: rgb(199, 199, 199);
-    -unity-text-outline-color: rgb(234, 255, 209);
-    -unity-text-outline-width: 0.5px;
-}
-
-.confirmation-text.visible {
-    opacity: 1;
+#submit-button:hover {
+    background-color: rgb(29, 78, 216);
 }

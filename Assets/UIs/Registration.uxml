@@ -1,24 +1,38 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UIs/StudentFormDataStyles.uss?fileID=7433441132597879392&amp;guid=e72c384ea51704b4aaef1e1b14f540d1&amp;type=3#StudentFormDataStyles" />
-    <ui:VisualElement name="Container" class="container" style="background-color: rgb(84, 169, 194);">
-        <ui:Label text="Student Data" display-tooltip-when-elided="true" name="Title" class="title" />
-        <ui:VisualElement class="input-group">
-            <ui:Label text="Name" class="input-label" />
-            <ui:TextField name="NameField" class="input-field" />
+    <ui:VisualElement class="card" style="width: 100%; height: 100%;">
+        <ui:VisualElement class="card-header">
+            <ui:Label text="Student Data &#10;Collection" class="card-title" />
+            <ui:Label text="Please fill out the form below to provide &#10;your student information." name="Label" class="card-description" />
         </ui:VisualElement>
-        <ui:VisualElement class="input-group">
-            <ui:Label text="Age" class="input-label" />
-            <ui:IntegerField name="AgeField" class="input-field" />
+        <ui:VisualElement class="card-content">
+            <ui:VisualElement class="grid-container">
+                <ui:VisualElement class="grid-item">
+                    <ui:Label text="Name" />
+                    <ui:TextField name="name-input" placeholder="Enter student&apos;s name" />
+                </ui:VisualElement>
+                <ui:VisualElement class="grid-item">
+                    <ui:Label text="Age" />
+                    <ui:IntegerField name="age-input" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="grid-container">
+                <ui:VisualElement class="grid-item">
+                    <ui:Label text="Email" />
+                    <ui:TextField name="email-input" placeholder="Enter student&apos;s email" />
+                </ui:VisualElement>
+                <ui:VisualElement class="grid-item">
+                    <ui:Label text="Gender" />
+                    <ui:DropdownField name="gender-dropdown" choices="Male,Female,Other" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="form-row">
+                <ui:Label text="Department" />
+                <ui:TextField name="department-input" placeholder="Enter student&apos;s department" />
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement class="input-group">
-            <ui:Label text="Gender" class="input-label" />
-            <ui:DropdownField name="GenderDropdown" choices="Male,Female,Other" class="input-field" />
+        <ui:VisualElement class="card-footer">
+            <ui:Button text="Submit" name="submit-button" />
         </ui:VisualElement>
-        <ui:VisualElement class="input-group">
-            <ui:Label text="Department" class="input-label" />
-            <ui:TextField name="DepartmentField" class="input-field" />
-        </ui:VisualElement>
-        <ui:Button text="Submit" display-tooltip-when-elided="true" name="SubmitButton" class="submit-button" style="border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
-        <ui:Label display-tooltip-when-elided="true" name="ConfirmationText" text="Confirmed" class="confirmation-text visible" />
     </ui:VisualElement>
 </ui:UXML>
