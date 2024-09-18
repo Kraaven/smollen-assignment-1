@@ -1,12 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Body" style="flex-grow: 1; background-color: rgb(112, 112, 112);">
-        <ui:VisualElement name="Top" style="flex-grow: 1; height: 0;">
-            <ui:Label tabindex="-1" text="Student&#10;Data" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="align-items: center; justify-content: space-around; -unity-text-align: middle-center; font-size: 50%; align-self: center; margin-top: 50px; flex-wrap: wrap; color: rgb(237, 237, 237); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); -unity-background-image-tint-color: rgb(0, 0, 0);" />
+    <Style src="project://database/Assets/UIs/StudentDataStyles.uss?fileID=7433441132597879392&amp;guid=6758240264db8384ea208eb0e1c696b4&amp;type=3#StudentDataStyles" />
+    <ui:VisualElement name="Body" class="body">
+        <ui:VisualElement name="Top" class="top">
+            <ui:Label text="Student Data &#10;Management" display-tooltip-when-elided="true" name="Title" class="title" />
         </ui:VisualElement>
-        <ui:VisualElement name="Bottom" style="flex-grow: 1; height: 40%; justify-content: center; margin-top: -4px; margin-right: -4px; margin-bottom: -4px; margin-left: -4px; padding-top: 10%; padding-right: 10%; padding-bottom: 10%; padding-left: 10%;">
-            <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Register" />
-            <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Fetch" />
-            <ui:Toggle label="Use FireStore" name="DataBaseType" style="margin-top: 20%; font-size: 40%; justify-content: flex-end; align-items: center; align-self: center;" />
+        <ui:VisualElement name="Bottom" class="bottom">
+            <ui:Button text="Register Student" display-tooltip-when-elided="true" name="Register" class="button" />
+            <ui:Button text="Fetch Student Data" display-tooltip-when-elided="true" name="Fetch" class="button" />
+            <ui:Toggle label="Use FireStore Database" name="DataBaseType" class="toggle" style="justify-content: flex-start; align-self: center; align-items: center;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

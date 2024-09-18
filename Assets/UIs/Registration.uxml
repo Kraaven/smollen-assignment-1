@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIs/StudentFormDataStyles.uss?fileID=7433441132597879392&amp;guid=e72c384ea51704b4aaef1e1b14f540d1&amp;type=3#StudentFormDataStyles" />
+    <ui:VisualElement name="Container" class="container" style="background-color: rgb(84, 169, 194);">
+        <ui:Label text="Student Data" display-tooltip-when-elided="true" name="Title" class="title" />
+        <ui:VisualElement class="input-group">
+            <ui:Label text="Name" class="input-label" />
+            <ui:TextField name="NameField" class="input-field" />
+        </ui:VisualElement>
+        <ui:VisualElement class="input-group">
+            <ui:Label text="Age" class="input-label" />
+            <ui:IntegerField name="AgeField" class="input-field" />
+        </ui:VisualElement>
+        <ui:VisualElement class="input-group">
+            <ui:Label text="Gender" class="input-label" />
+            <ui:DropdownField name="GenderDropdown" choices="Male,Female,Other" class="input-field" />
+        </ui:VisualElement>
+        <ui:VisualElement class="input-group">
+            <ui:Label text="Department" class="input-label" />
+            <ui:TextField name="DepartmentField" class="input-field" />
+        </ui:VisualElement>
+        <ui:Button text="Submit" display-tooltip-when-elided="true" name="SubmitButton" class="submit-button" style="border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
+        <ui:Label display-tooltip-when-elided="true" name="ConfirmationText" text="Confirmed" class="confirmation-text visible" />
+    </ui:VisualElement>
+</ui:UXML>
