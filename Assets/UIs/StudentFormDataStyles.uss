@@ -25,6 +25,7 @@
 
 .card-content {
     margin-bottom: 16px;
+    -unity-text-align: upper-left;
 }
 
 .grid-container {
@@ -156,4 +157,142 @@ DropdownField {
 
 #submit-button:hover {
     background-color: rgb(29, 78, 216);
+}
+
+.divider {
+    height: 2px;
+    background-color: rgb(165, 165, 165);
+    margin: 2px 0;
+}
+
+.data-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px;
+    border-width: 2px;
+    border-color: rgb(229, 231, 235);
+    border-radius: 2px;
+    margin-bottom: 8px;
+}
+
+.section-label {
+    font-size: 16px;
+    color: rgb(55, 65, 81);
+}
+
+.section-value {
+    font-size: 16px;
+    color: rgb(55, 65, 81);
+}
+
+.MailCollection {
+    margin-top: 8px;
+}
+
+#submit-button {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(59, 130, 246);
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    -unity-font-style: bold;
+}
+
+#submit-button:hover {
+    background-color: rgb(29, 78, 216);
+}
+
+#submission-text {
+    font-size: 14px;
+    color: rgb(34, 197, 94);
+}
+
+.card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: rgb(229, 231, 235);
+}
+
+.card-header {
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 32px;
+    -unity-font-style: bold;
+    margin-bottom: 8px;
+}
+
+.email-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.email-label {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.email-input {
+    height: 40px;
+    border-width: 1px;
+    border-color: rgb(229, 231, 235);
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.separator-bar {
+    height: 2px;
+    background-color: rgb(165, 165, 165);
+    margin: 16px 0;
+}
+
+.card-content {
+    margin-bottom: 16px;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgb(229, 231, 235);
+}
+
+.data-label {
+    font-weight: bold;
+}
+
+.data-value {
+    color: rgb(107, 114, 128);
+}
+
+.card-footer {
+    margin-top: 16px;
+}
+
+#submit-button {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(59, 130, 246);
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    -unity-font-style: bold;
+}
+
+#submit-button:hover {
+    background-color: rgb(29, 78, 216);
+}
+
+.submission-text {
+    align-self: center;
+    color: rgb(34, 197, 94);
+    font-weight: bold;
+    margin-top: 16px;
 }
