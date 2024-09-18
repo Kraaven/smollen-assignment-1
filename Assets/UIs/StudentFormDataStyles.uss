@@ -85,3 +85,75 @@ DropdownField {
 #submit-button:hover {
     background-color: rgb(29, 78, 216);
 }
+
+TextField {
+    height: 32px;
+    border-width: 0.5px;
+    border-color: rgb(229, 231, 235);
+    border-radius: 4px;
+    padding: 4px 8px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+IntegerField {
+    height: 32px;
+    border-width: 0.5px;
+    border-color: rgb(229, 231, 235);
+    border-radius: 4px;
+    padding: 4px 8px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+DropdownField {
+    height: 32px;
+    border-width: 0.5px;
+    border-color: rgb(229, 231, 235);
+    border-radius: 4px;
+    padding: 4px 8px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#submission-text {
+    font-size: 14px;
+    color: green;
+    margin-top: 16px;
+    display: none;
+}
+
+.card-footer {
+    margin-top: 16px;
+}
+
+#submit-button {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(59, 130, 246);
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    -unity-font-style: bold;
+}
+
+#submit-button:hover {
+    background-color: rgb(29, 78, 216);
+}

@@ -23,7 +23,7 @@
                 </ui:VisualElement>
                 <ui:VisualElement class="grid-item">
                     <ui:Label text="Gender" />
-                    <ui:DropdownField name="gender-dropdown" choices="Male,Female,Other" />
+                    <ui:DropdownField name="gender-dropdown" choices="Male,Female,Other" style="margin-left: 2px; margin-right: 2px;" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="form-row">
@@ -32,7 +32,8 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement class="card-footer">
-            <ui:Button text="Submit" name="submit-button" />
+            <ui:Button text="Submit" name="submit-button" clicked="OnSubmitButtonClicked" />
         </ui:VisualElement>
+        <ui:Label text="Submission Successful!" id="submission-text" name="SubmissionStatus" style="align-self: center;" />
     </ui:VisualElement>
 </ui:UXML>
