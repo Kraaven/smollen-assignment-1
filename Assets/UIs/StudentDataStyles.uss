@@ -36,14 +36,3 @@
 .button:hover {
     background-color: rgb(41, 128, 185);
 }
-
-.toggle {
-    margin-top: 20px;
-    font-size: 16px;
-    color: rgb(236, 240, 241);
-}
-
-.toggle .unity-toggle__input {
-    width: 20px;
-    height: 20px;
-}

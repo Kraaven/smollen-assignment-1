@@ -2,14 +2,16 @@
     <Style src="project://database/Assets/UIs/StudentFormDataStyles.uss?fileID=7433441132597879392&amp;guid=e72c384ea51704b4aaef1e1b14f540d1&amp;type=3#StudentFormDataStyles" />
     <ui:VisualElement class="card" style="width: 100%; height: 100%;">
         <ui:VisualElement class="card-header">
-            <ui:Label text="Student Data &#10;Collection" class="card-title" />
-            <ui:Label text="Please fill out the form below to provide &#10;your student information." name="Label" class="card-description" />
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Label text="Student Data &#10;Collection" class="card-title" />
+            </ui:VisualElement>
+            <ui:Label text="Please fill out the form below to provide &#10;your student information." name="Label" class="card-description" style="margin-top: 40px;" />
         </ui:VisualElement>
-        <ui:VisualElement class="card-content">
+        <ui:VisualElement class="card-content" style="margin-top: -10px;">
             <ui:VisualElement class="grid-container">
                 <ui:VisualElement class="grid-item">
                     <ui:Label text="Name" />
-                    <ui:TextField name="name-input" placeholder="Enter student&apos;s name" />
+                    <ui:TextField name="name-input" placeholder="Enter student&apos;s name" password="false" style="padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; opacity: 1;" />
                 </ui:VisualElement>
                 <ui:VisualElement class="grid-item">
                     <ui:Label text="Age" />
@@ -18,22 +20,24 @@
             </ui:VisualElement>
             <ui:VisualElement class="grid-container">
                 <ui:VisualElement class="grid-item">
-                    <ui:Label text="Email" />
-                    <ui:TextField name="email-input" placeholder="Enter student&apos;s email" />
+                    <ui:Label text="Department" />
+                    <ui:TextField name="department-input" placeholder="Enter student&apos;s email" />
                 </ui:VisualElement>
                 <ui:VisualElement class="grid-item">
                     <ui:Label text="Gender" />
-                    <ui:DropdownField name="gender-dropdown" choices="Male,Female,Other" style="margin-left: 2px; margin-right: 2px;" />
+                    <ui:DropdownField name="gender-dropdown" choices="Male,Female,Other" index="-1" style="margin-left: 0; margin-right: 0; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; margin-top: 0; margin-bottom: 0;" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="form-row">
-                <ui:Label text="Department" />
-                <ui:TextField name="department-input" placeholder="Enter student&apos;s department" />
+                <ui:Label text="Email" />
+                <ui:TextField name="email-input" placeholder="Enter student&apos;s department" />
+                <ui:Label text="Registration Number" />
+                <ui:TextField name="Roll-input" placeholder="Enter student&apos;s department" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement class="card-footer">
             <ui:Button text="Submit" name="submit-button" clicked="OnSubmitButtonClicked" />
         </ui:VisualElement>
-        <ui:Label text="Submission Successful!" id="submission-text" name="SubmissionStatus" style="align-self: center;" />
+        <ui:Label text="Submission Successful!" id="submission-text" name="SubmissionStatus" style="align-self: center; -unity-text-align: lower-left; margin-top: 10px;" />
     </ui:VisualElement>
 </ui:UXML>

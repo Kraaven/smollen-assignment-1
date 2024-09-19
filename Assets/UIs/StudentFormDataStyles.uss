@@ -51,7 +51,12 @@ TextField {
     border-width: 1px;
     border-color: rgb(229, 231, 235);
     border-radius: 4px;
-    padding: 4px 8px;
+    padding: 0 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 8px;
 }
 
 IntegerField {
@@ -140,6 +145,14 @@ DropdownField {
     color: green;
     margin-top: 16px;
     display: none;
+}
+
+#unity-text-input {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
 }
 
 .card-footer {
@@ -295,4 +308,11 @@ DropdownField {
     color: rgb(34, 197, 94);
     font-weight: bold;
     margin-top: 16px;
+}
+.unity-popup-field__input {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
 }
