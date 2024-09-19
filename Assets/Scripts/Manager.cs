@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Firebase;
 using Firebase.Database;
 using Firebase.Firestore;
 using Firebase.Extensions;
 using Google.MiniJSON;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class Manager : MonoBehaviour
 {
@@ -39,38 +41,7 @@ public class Manager : MonoBehaviour
         else
         {
             Debug.Log("Uploading to Realtime Database");
-            // // databaseReference.Child("Students").Child(data.Email).SetRawJsonValueAsync(JsonUtility.ToJson(data))
-            // //     .ContinueWithOnMainThread(task => {
-            // //         if (task.IsCompleted)
-            // //         {
-            // //             Debug.Log("Data successfully written!");
-            // //         }
-            // //         else
-            // //         {
-            // //             Debug.LogError("Error writing data: " + task.Exception);
-            // //         }
-            // //     });
-            //
-            // Dictionary<string, object> legacydata = new Dictionary<string, object>
-            // {
-            //     { "Email", data.Email },
-            //     { "Name", data.Name },
-            //     { "Age", data.Age },
-            //     { "Department", data.Department },
-            //     { "Gender", data.Gender }
-            // };
-            //
-            // databaseReference.Child("Students").Child(legacydata["Email"].ToString()).SetValueAsync(legacydata)
-            //     .ContinueWithOnMainThread(task => {
-            //         if (task.IsCompleted)
-            //         {
-            //             Debug.Log("Test Data successfully written!");
-            //         }
-            //         else
-            //         {
-            //             Debug.LogError("Error writing test data: " + task.Exception);
-            //         }
-            //     });
+            
 
             databaseReference.Child("Students").Child(data.RollNumber).Child("Name").SetValueAsync(data.Name);
             databaseReference.Child("Students").Child(data.RollNumber).Child("Age").SetValueAsync(data.Age);
@@ -83,85 +54,83 @@ public class Manager : MonoBehaviour
     }
 
 
-    public static StudentData GetData(string ID)
-{
-    if (UseFireStore)
+ public void GetData(string ID, Action<string> callback)
     {
-        Debug.Log("Retrieving data from Firestore Database");
-        return GetDataFromFirestore(ID);
-    }
-    else
-    {
-        Debug.Log("Retrieving data from Realtime Database");
-        return GetDataFromRealtimeDatabase(ID);
-    }
-}
-
-private static StudentData GetDataFromFirestore(string ID)
-{
-    var docRef = firestoreDatabase.Collection("Students").Document(ID);
-    var task = docRef.GetSnapshotAsync();
-    task.ContinueWithOnMainThread(t => {
-        if (t.IsCompleted && !t.IsFaulted && !t.IsCanceled)
+        if (UseFireStore)
         {
-            DocumentSnapshot snapshot = t.Result;
-            if (snapshot.Exists)
-            {
-                StudentData data = snapshot.ConvertTo<StudentData>();
-                Debug.Log($"Data retrieved from Firestore: {JsonUtility.ToJson(data)}");
-                return data;
-            }
-            else
-            {
-                Debug.LogWarning($"No data found in Firestore for ID: {ID}");
-                return null;
-            }
+            Debug.Log("Retrieving data from Firestore Database");
+            //StartCoroutine(GetDataFromFirestoreCoroutine(ID, callback));
+            GetFireStoreData(ID, callback);
         }
         else
         {
-            Debug.LogError($"Error retrieving data from Firestore: {t.Exception}");
-            return null;
+            Debug.Log("Retrieving data from Realtime Database");
+            //StartCoroutine(GetDataFromRealtimeDatabaseCoroutine(ID, callback));
+            GetRealtimeData(ID,callback);
         }
-    });
-    return null;
-}
+    }
+ 
+    public void GetRealtimeData(string ID, System.Action<string> callback)
+    {
+        databaseReference.Child("Students").Child(ID).GetValueAsync().ContinueWith(task => {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Firebase Realtime DB retrieval encountered an error: " + task.Exception);
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                var test = snapshot.Value as Dictionary<string, object>;
+                
+                print(test["Name"]);
+                
+                callback(snapshot.GetRawJsonValue());
+            }
+        });
+    }
 
-private static StudentData GetDataFromRealtimeDatabase(string ID)
-{
-    var task = databaseReference.Child("Students").Child(ID).GetValueAsync();
-    task.ContinueWithOnMainThread(t => {
-        if (t.IsCompleted && !t.IsFaulted && !t.IsCanceled)
+    public void GetFireStoreData(string ID, Action<string> callback)
+    {
+        GetFirestoreData("Students", ID).ContinueWith(task =>
         {
-            DataSnapshot snapshot = t.Result;
-            if (snapshot.Exists)
+            if (task.IsFaulted)
             {
-                StudentData data = snapshot.Value as StudentData;
-                if (data != null)
-                {
-                    Debug.Log($"Data retrieved from Realtime Database: {JsonUtility.ToJson(data)}");
-                    return data;
-                }
-                else
-                {
-                    Debug.LogWarning($"Data format incorrect for ID: {ID}");
-                    return null;
-                }
+                Debug.LogError("Firebase Firestore DB retrieval encountered an error: " + task.Exception);
+                callback(null);
             }
-            else
+            else if (task.IsCompleted)
             {
-                Debug.LogWarning($"No data found in Realtime Database for ID: {ID}");
-                return null;
+                string jsonResult = task.Result;
+                callback(jsonResult);
             }
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    public async Task<string> GetFirestoreData(string collection, string document)
+    {
+        DocumentReference docRef = firestoreDatabase.Collection(collection).Document(document);
+        DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+
+        if (snapshot.Exists)
+        {
+            Dictionary<string, object> docDictionary = snapshot.ToDictionary();
+            return JsonUtility.ToJson(new RStudentData(
+                docDictionary["Email"].ToString(),
+                docDictionary["Name"].ToString(),
+                docDictionary["Department"].ToString(),
+                docDictionary["Gender"].ToString(),
+                int.Parse(docDictionary["Age"].ToString()),
+                docDictionary["RollNumber"].ToString()
+                ));
         }
         else
         {
-            Debug.LogError($"Error retrieving data from Realtime Database: {t.Exception}");
+            Debug.Log("Document does not exist!");
             return null;
         }
-    });
-    return null;
-}
-
+    }
+ 
+ 
     private void Awake()
     {
         Instance = this;
@@ -215,6 +184,37 @@ public class StudentData
     }
 
     public StudentData()
+    {
+    }
+}
+
+
+public class RStudentData
+{
+
+    public string Email;
+
+    public string Name;
+
+    public int Age;
+
+    public string Department;
+
+    public string Gender;
+
+    public string RollNumber;
+
+    public RStudentData(string E, string N, string D, string G, int A, string R)
+    {
+        Email = E;
+        Name = N;
+        Age = A;
+        Department = D;
+        Gender = G;
+        RollNumber = R;
+    }
+
+    public RStudentData()
     {
     }
 }
